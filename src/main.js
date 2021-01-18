@@ -21,6 +21,7 @@ Vue.filter('date', dateFilter);
 firebase.initializeApp({
   apiKey: "AIzaSyD3lKzaJd7eY3b_chvqn4SL4HRMJWmww6c",
   authDomain: "vue-pet-project-601f9.firebaseapp.com",
+  databaseURL: "https://vue-pet-project-601f9-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "vue-pet-project-601f9",
   storageBucket: "vue-pet-project-601f9.appspot.com",
   messagingSenderId: "531863599016",
