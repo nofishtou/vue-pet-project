@@ -27,11 +27,11 @@
               id="limit"
               type="number"
               v-model.number="limit"
-              :class="{invalid: $v.limit.$dirty && !$v.limit.minLength}"
+              :class="{invalid: $v.limit.$dirty && !$v.limit.minValue}"
           >
           <label for="limit">Лимит</label>
           <span
-            v-if="$v.limit.$dirty && !$v.limit.minLength"
+            v-if="$v.limit.$dirty && !$v.limit.minValue"
             class="helper-text invalid"
           >
             Минимальная величина {{$v.limit.$params.minValue.min}}
@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import {required, minValue} from 'vuelidate/lib/validators'
+import {required, minValue} from 'vuelidate/lib/validators';
 
 export default {
   data: () => ({
@@ -60,6 +60,7 @@ export default {
   },
   methods: {
     async submitHandler() {
+      console.log(this.$v)
       if(this.$v.$invalid) {
         this.$v.$touch();
         return;
