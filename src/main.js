@@ -9,6 +9,7 @@ import Loader from '@/components/app/Loader';
 import tooltipDirective from '@/directives/tooltip.directive';
 import dateFilter from '@/filters/date.filter';
 import currencyFilter from '@/filters/currency.filter';
+import localizeFilter from '@/filters/localize.filter';
 import messagePlugin from '@/utils/message.plugin';
 import 'materialize-css/dist/js/materialize.min';
 
@@ -22,6 +23,7 @@ Vue.use(messagePlugin);
 Vue.use(Vuelidate);
 Vue.filter('date', dateFilter);
 Vue.filter('currency', currencyFilter);
+Vue.filter('localize', localizeFilter);
 Vue.directive('tooltip', tooltipDirective);
 Vue.component('Loader', Loader);
 Vue.component('Paginate', Paginate);

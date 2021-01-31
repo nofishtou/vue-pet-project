@@ -3,8 +3,10 @@
     <Loader v-if="loading" />
     <div v-else-if="record">
       <div class="breadcrumb-wrap">
-        <router-link to="/history" class="breadcrumb">История</router-link>
-        <a @click.prevent class="breadcrumb"> {{record.type === 'income' ? 'Доход' : 'Расход'}} </a>
+        <router-link to="/history" class="breadcrumb">{{"History" | localize}}</router-link>
+        <a @click.prevent class="breadcrumb">
+          {{recordType}}
+        </a>
       </div>
       <div class="row">
         <div class="col s12 m6">
@@ -13,9 +15,9 @@
             'green': record.type === 'income'
           }">
             <div class="card-content white-text">
-              <p>Описание: {{record.description}}</p>
-              <p>Сумма: {{record.amount | currency("UAH")}}</p>
-              <p>Категория: {{record.categoryName}}</p>
+              <p>{{"Description" | localize}}: {{record.description}}</p>
+              <p>{{"Amount" | localize}}: {{record.amount | currency("UAH")}}</p>
+              <p>{{"Category" | localize}}: {{record.categoryName}}</p>
 
               <small>{{record.date | date('date')}}</small>
             </div>
@@ -23,11 +25,12 @@
         </div>
       </div>
     </div>
-    <p class="center" v-else> Запись с id {{$route.params.id}} не найдена.</p>
+    <p class="center" v-else>{{"Record_With" | localize}}{{$route.params.id}} {{"Not_found" | localize}}.</p>
   </div>
 </template>
 
 <script>
+import localizeFilter from '@/filters/localize.filter';
 export default {
   name: "detail",
   data() {
@@ -35,6 +38,14 @@ export default {
       record: null,
       loading: true,
     };
+  },
+  computed: {
+    recordType() {
+     if(this.record.type === 'income') {
+       return localizeFilter("Income") ;
+     }
+     return localizeFilter("Outcome") ;
+    }
   },
   async mounted() {
     const id = this.$route.params.id;
