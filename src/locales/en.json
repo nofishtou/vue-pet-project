@@ -30,6 +30,7 @@
   "Planing": "Planing",
   "From": "from",
   "Category": "Category",
+  "New_Record": "New Record",
   "History_Of_Records":  "History Of Records",
   "Records_Empty": "Records are empty",
   "Add_New_Record": "Add new record",
@@ -68,5 +69,6 @@
   "NoUserWithEmail": "No user with email",
   "WrongPassword": "Invalid password",
   "EmailInUse": "Email is already in use",
-  "Error": "Error"
+  "Error": "Error",
+  "Detail_Title": "Detail"
 }
